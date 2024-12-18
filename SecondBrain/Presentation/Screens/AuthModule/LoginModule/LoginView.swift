@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var email: String = ""
-    @State var password: String = ""
+    @StateObject var viewModel = LoginViewModel()
     var body: some View {
         Image("login")
             .resizable()
@@ -23,7 +22,7 @@ struct LoginView: View {
             
             HStack{
                 Image(systemName: "envelope")
-                TextField("Email", text: $email)
+                TextField("Email", text: $viewModel.email)
             }
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
@@ -31,14 +30,14 @@ struct LoginView: View {
             
             HStack{
                 Image(systemName: "lock")
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $viewModel.password)
             }
             .padding(.vertical, 6)
             .background(Divider(), alignment: .bottom)
             .padding(.bottom, 8)
             
             CustomAuthButton(label: "Log In", action: {
-                //code
+                viewModel.login()
             })
             .padding(.top, 20)
         }
