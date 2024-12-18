@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State private var isSignup: Bool = false
     @StateObject var viewModel = LoginViewModel()
     var body: some View {
         Image("login")
@@ -49,11 +50,14 @@ struct LoginView: View {
                 .font(.subheadline)
             
             CustomAuthButton(label: "Create an Account", action: {
-                //code
+                isSignup.toggle()
             })
             .padding()
             .padding(.bottom, 30)
         }
+        .sheet(isPresented: $isSignup, content: {
+            RegistrationView()
+        })
         
     }
 }
