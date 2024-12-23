@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct ToDoItemModel: Codable, Identifiable {
-    let id: String
+    @DocumentID var id: String?
     let title: String
     let dueDate: TimeInterval
     let createdDate: TimeInterval
     var isDone: Bool
 }
+
+

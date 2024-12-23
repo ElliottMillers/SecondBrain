@@ -29,6 +29,9 @@ struct ProfileView: View {
                 }
             }
         }
+        .onAppear {
+            viewModel.fetchUser()
+        }
     }
     
     @ViewBuilder
@@ -37,15 +40,15 @@ struct ProfileView: View {
             HStack {
                 Image(systemName: "person.circle")
                     .resizable()
-                    .frame(width: 60,height: 60)
-                    .padding(.horizontal,10)
+                    .frame(width: 60, height: 60)
+                    .padding(.horizontal, 10)
                 
                 VStack {
                     Text(user.name)
                         .bold()
                         .font(.title)
                     
-                    Text(user.email)
+                    Text("\(user.email)@gmail.com")
                         .bold()
                         .font(.title2)
                     
@@ -53,7 +56,7 @@ struct ProfileView: View {
                         .foregroundStyle(.gray)
                 }
             }
-            .padding(.top,50)
+            .padding(.top, 50)
             
             Spacer()
             
@@ -64,11 +67,12 @@ struct ProfileView: View {
                     RoundedRectangle(cornerRadius: 25.0)
                         .frame(width: 300, height: 50)
                     
-                    Text("Sign out")
+                    Text("Log out")
                         .font(.title3)
                         .foregroundStyle(.red)
                 }
             }
+            .padding(.bottom, 30)
         }
     }
 }
