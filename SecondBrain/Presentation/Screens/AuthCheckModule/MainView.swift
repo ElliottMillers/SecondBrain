@@ -12,10 +12,27 @@ struct MainView: View {
     
     var body: some View {
         if viewModel.isSignIn, !viewModel.currentUserId.isEmpty {
-            ProfileView()
+            accountView
         } else {
             LoginView()
         }
+    }
+    @ViewBuilder
+    var accountView: some View {
+        TabView {
+            TodoView()
+                .tabItem{
+                    Image(systemName: "checkmark")
+                }
+            CalendarView()
+                .tabItem{
+                    Image(systemName: "calendar")
+                }
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person")
+                }
+            }
     }
 }
 

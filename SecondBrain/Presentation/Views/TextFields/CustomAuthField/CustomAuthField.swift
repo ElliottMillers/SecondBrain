@@ -18,8 +18,10 @@ struct CustomAuthField: View {
             Image(systemName: image)
             if isSecure {
                 SecureField(placeholder, text: $text)
+                    .textInputAutocapitalization(.never)
             } else {
                 TextField(placeholder, text: $text)
+                    .textInputAutocapitalization(.never)
             }
         }
         .padding(.vertical, 6)
