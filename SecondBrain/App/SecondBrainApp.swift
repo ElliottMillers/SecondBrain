@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseCore
-
+ 
 @main
 struct SecondBrainApp: App {
     
